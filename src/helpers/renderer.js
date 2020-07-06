@@ -7,10 +7,10 @@ import serialize from 'serialize-javascript';
 
 import Routes from './../client/Routes';
 
-export default (req, store) => {
+export default (req, store, context) => {
     const content = renderToString(
         <Provider store={store}>
-            <StaticRouter location={req.path} context={{}}>
+            <StaticRouter location={req.path} context={context}>
                 <div>{renderRoutes(Routes)}</div>
             </StaticRouter>
         </Provider>
@@ -22,7 +22,7 @@ export default (req, store) => {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
-        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
     </head>
     <body>
         <div id="root">${content}</div>
